@@ -17,46 +17,46 @@ This is a Flask API for searching and retrieving word frequency from Wikipedia u
    git clone https://github.com/your-username/wiki-search-api.git
 Navigate to the project directory:
 
-```bash
-Copy code
-cd wiki-search-api
+   ```bash
+   Copy code
+   cd wiki-search-api
 Create a virtual environment (optional but recommended):
 
-```bash
-Copy code
-python -m venv venv
+   ```bash
+   Copy code
+   python -m venv venv
 Activate the virtual environment:
 
 On Windows:
 
-```bash
-Copy code
-venv\Scripts\activate
+   ```bash
+   Copy code
+   venv\Scripts\activate
 On Unix or MacOS:
 
-```bash
-Copy code
-source venv/bin/activate
+   ```bash
+   Copy code
+   source venv/bin/activate
 Install dependencies:
 
-```bash
-Copy code
-pip install -r requirements.txt
+   ```bash
+   Copy code
+   pip install -r requirements.txt
 Usage
 Run the Flask application:
 
-```bash
-Copy code
-python app.py
+   ```bash
+   Copy code
+   python app.py
 The API will be accessible at http://localhost:5000.
 
 Access the API endpoints:
 
 Search Wikipedia and count word frequency:
 
-```bash
-Copy code
-POST /wiki-search-count
+   ```bash
+   Copy code
+   POST /wiki-search-count
 Example Payload:
 
 json
@@ -72,8 +72,8 @@ Copy code
 GET /wiki-search-history
 Test the application:
 
-```bash
-Copy code
-python -m unittest test_app.py
+   ```bash
+   Copy code
+   python -m unittest test_app.py
 Database
 The application uses an SQLite database (wiki.db) to store search history. The database is created automatically when the application runs.
