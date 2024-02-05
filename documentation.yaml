@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: Wiki Search API
+  version: 1.0.0
+  description: API for searching and retrieving word frequency from Wikipedia
+
+servers:
+  - url: http://localhost:5000
+    description: Local development server
+
+paths:
+  /wiki-search-count:
+    post:
+      summary: Search Wikipedia and count word frequency
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyword:
+                  type: string
+                  description: The keyword to search on Wikipedia
+                limit:
+                  type: integer
+                  description: The limit of word frequency results to return
+                  minimum: 1
+                  example: 5
+              required:
+                - keyword
+                - limit
+      responses:
+        "200":
+          description: Successful response with word frequency
+          content:
+            application/json:
+              schema:
+                type: object
+                example: { "word1": 10, "word2": 8, "word3": 5 }
+        "400":
+          description: Bad request, check your input
+        "500":
+          description: Internal server error
+
+  /wiki-search-history:
+    get:
+      summary: Retrieve search history from the database
+      responses:
+        "200":
+          description: Successful response with search history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    keyword:
+                      type: string
+                      description: The keyword searched
+                    results:
+                      type: string
+                      description: Word frequency results as a JSON string
+                      example: { "word1": 10, "word2": 8, "word3": 5 }
+                  required:
+                    - keyword
+                    - results
+                example:
+                  - keyword: "Python"
+                    results: '{"programming": 15, "language": 10, "snake": 5}'
+                  - keyword: "Flask"
+                    results: '{"web": 8, "framework": 5, "Python": 3}'
+        "500":
+          description: Internal server error
